@@ -1,3 +1,2 @@
-sushumna's first git file
 
-sushi changed for second commit.
+Sushi's doc 2 via upload
