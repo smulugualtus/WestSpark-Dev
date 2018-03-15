@@ -1,0 +1,24 @@
+<apex:component >
+    
+    
+    <!--********************-->
+    <!--component attributes-->
+    <!--********************-->
+    <apex:attribute name="title" type="String" description="" required="true"/>
+
+    
+    <!--********-->
+    <!--UI START-->
+    <!--********-->
+    <div class="slds-clearfix slds-section-title--divider slds-has-divider--bottom-space">
+        <h3 class="slds-float--left">{!title}</h3>    
+        
+        <div class="slds-float--right">
+            <div class="slds-button-group" role="group">
+                <!-- dynamically add buttons -->
+                <apex:componentBody />
+            </div>
+        </div>
+    </div>
+    
+</apex:component>
