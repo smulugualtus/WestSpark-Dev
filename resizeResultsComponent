@@ -1,0 +1,57 @@
+<apex:component >
+    
+    <!--
+		Common funcitonality to resize a div based 
+		on the width of the window
+	-->
+    <apex:attribute name="offset" type="Integer" description="" default="50" required="true"/>
+    
+    <apex:includeScript value="{!URLFOR($Resource.jQueryLibrary, 'jquery.min.js')}"/>
+
+    <script type="text/javascript">
+    
+    //setFocusOnLoad removes focus from the search box
+    //this kept auto-scrolling the page, very annoying
+    function setFocusOnLoad(){}
+    
+    //jl$ = jQuery.noConflict();
+    jQuery(document).ready(function () {
+        sizeResults();
+    });
+
+    jQuery(document).load(function () {
+        console.log('jQuery load: ' + {!offset});
+        sizeResults();
+    });
+
+    jQuery(window).resize(function(){
+        sizeResults();
+    });
+    
+    //work around when the page is embedded in a standard page layout
+    //have to append our function as SF uses this as well
+    function addLoadEvent(func){ 
+        var oldonload = window.onload; 
+        if (typeof window.onload != 'function'){ 
+            window.onload = func; 
+        }else{ 
+            window.onload = function(){ 
+                if (oldonload){ 
+                    oldonload(); 
+                } 
+                func(); 
+            } 
+        } 
+    } 
+    
+    addLoadEvent(function(){ 
+        sizeResults();
+    });
+    
+    function sizeResults(){
+        var width = jQuery(window).width() - {!offset};
+        jQuery(".divResults").width(width);
+    }
+    </script>
+    
+</apex:component>
